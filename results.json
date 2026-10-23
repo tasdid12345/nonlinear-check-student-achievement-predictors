@@ -1,0 +1,33 @@
+{
+  "question": "Can a cross-validation-tuned gradient-boosting model predict student achievement from background and study-process predictors more accurately than a standard linear regression?",
+  "method": "UCI Student Performance (id 320); target G3, G1/G2 dropped; one fixed 75/25 split; tuning by 5-fold CV on train only; baseline one-hot+standardized OLS vs. randomized-search-tuned LightGBM; metric test RMSE.",
+  "dataset": {
+    "name": "UCI Student Performance (id 320)",
+    "source_url": "https://archive.ics.uci.edu/dataset/320/student+performance",
+    "n_rows": 649,
+    "n_train": 486,
+    "n_test": 163,
+    "same_as_paper": false,
+    "baseline_is_papers_method": false
+  },
+  "metric_name": "Test RMSE (G3 grade points)",
+  "higher_is_better": false,
+  "baseline": "Ordinary linear regression on one-hot encoded + standardized predictors (all predictors, G1/G2 excluded).",
+  "improved": "LightGBM regressor on the same preprocessed features, tuned by 20-iteration randomized 5-fold CV search on the training set; mean over seeds 42-44.",
+  "metrics": {
+    "baseline_score": 2.679228577850255,
+    "improved_score": 2.6565001493253533,
+    "improvement": 0.022728428524901645,
+    "baseline_score_std": 0.0,
+    "improved_score_std": 0.020609337536473784,
+    "baseline_mae": 2.086643193253202,
+    "improved_mae": 2.078972624850676,
+    "baseline_r2": 0.15521198039473227,
+    "improved_r2": 0.16943420794824185,
+    "improved_mae_std": 0.02271362065399081,
+    "improved_r2_std": 0.012889094228012819,
+    "improved_cv_rmse_mean": 2.160590430684907,
+    "target_std_test": 2.9239651275202445
+  },
+  "notes": "Stand-in dataset, not ICILS 2023; the baseline is a generic linear model, not the paper's method. Single small split (test set of modest size) so differences may be within noise; seed std for LightGBM reflects model/CV randomness only, not split variability. OLS is deterministic (std 0)."
+}
