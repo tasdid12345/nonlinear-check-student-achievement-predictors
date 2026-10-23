@@ -24,6 +24,30 @@ python analysis.py
 ## Results
 Results are written to `results.json` (and a chart to `figures/`).
 
+## Results (latest run)
+
+On the UCI Student Performance dataset (649 rows, one 75/25 split), a standard linear regression reached test RMSE 2.68 grade points, while a CV-tuned LightGBM reached 2.66, a small gain of 0.02 that may be within noise.
+
+| Metric | Value |
+|---|---|
+| baseline_score | 2.679 |
+| improved_score | 2.657 |
+| improvement | 0.02273 |
+| baseline_score_std | 0 |
+| improved_score_std | 0.02061 |
+| baseline_mae | 2.087 |
+| improved_mae | 2.079 |
+| baseline_r2 | 0.1552 |
+| improved_r2 | 0.1694 |
+| improved_mae_std | 0.02271 |
+| improved_r2_std | 0.01289 |
+| improved_cv_rmse_mean | 2.161 |
+| target_std_test | 2.924 |
+
+Run on 2026-10-23. Full output: [results.json](results.json) · [run.log](run.log)
+
+Notes: Stand-in dataset, not ICILS 2023; the baseline is a generic linear model, not the paper's method. Single small split (test set of modest size) so differences may be within noise; seed std for LightGBM reflects model/CV randomness only, not split variability. OLS is deterministic (std 0).
+
 ## Reference
 
 This project is motivated by the following paper:
